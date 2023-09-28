@@ -1,5 +1,5 @@
 from flask import Flask,request, render_template, flash, redirect, url_for,session, logging, send_file
-from flask_mysqldb import MySQL 
+from flask_sqlalchemy import SQLAlchemy 
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators, DateTimeField, BooleanField, IntegerField
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
@@ -116,7 +116,7 @@ def send_confirmation_email(user_email):
 # test this function whether correct link is produced##############
 
 #init Mysql
-mysql = MySQL(app)
+db = SQLAlchemy(app)
 
 @app.before_request
 def make_session_permanent():
