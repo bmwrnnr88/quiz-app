@@ -23,6 +23,9 @@ from wtforms.fields.html5 import DateField
 from wtforms.validators import ValidationError
 import socket
 from emailverifier import Client
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.secret_key= 'huihui'
