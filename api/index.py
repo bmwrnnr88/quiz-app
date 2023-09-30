@@ -27,13 +27,10 @@ from emailverifier import Client
 app = Flask(__name__)
 app.secret_key= 'huihui'
 
-#Config MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = ''
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'flask'
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://default:mYWSj6tIuTF1@ep-lucky-grass-39158658.us-east-1.postgres.vercel-storage.com:5432/verceldb'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db = SQLAlchemy(app)
 
 app.config.update(
 	DEBUG=True,
@@ -633,4 +630,5 @@ def confirm_email(token):
 
 
 if __name__ == "__main__":
-	app.run(host = "0.0.0.0",debug=True)
+    if not app.config.get("PRODUCTION"):
+        app.run(host="0.0.0.0", debug=True)
