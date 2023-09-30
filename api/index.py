@@ -29,7 +29,6 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.secret_key= 'huihui'
-app = Flask(__name__, static_folder='../static')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://default:mYWSj6tIuTF1@ep-lucky-grass-39158658.us-east-1.postgres.vercel-storage.com:5432/verceldb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
